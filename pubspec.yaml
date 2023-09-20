@@ -34,13 +34,23 @@ flutter:
   uses-material-design: true
 
 
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - images/
 
 
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+fonts:
+    - family: Urbanist Bold
+      fonts:
+        - asset: fonts/Urbanist-Bold.ttf
+       
+    - family: Urbanist SemiBold
+      fonts:
+        - asset: fonts/Urbanist-SemiBold.ttf
+  
+    - family: Urbanist Medium
+      fonts:
+        - asset: fonts/Urbanist-Medium.ttf
+     
+    - family: Urbanist Regular
+      fonts:
+        - asset: fonts/Urbanist-Regular.ttf
