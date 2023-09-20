@@ -45,8 +45,8 @@ class MyTextFormField extends StatelessWidget {
 }
 
 //password text form field
-class passTextField extends StatelessWidget {
-  passTextField({
+class PassTextField extends StatelessWidget {
+  PassTextField({
     super.key,
   });
   final TextEditingController passwordController = TextEditingController();
