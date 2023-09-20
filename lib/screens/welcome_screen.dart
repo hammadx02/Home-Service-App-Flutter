@@ -1,60 +1,102 @@
 import 'package:flutter/material.dart';
+import 'package:internship_tasks/screens/login_screen.dart';
+import 'package:internship_tasks/screens/register_screen.dart';
 import 'package:internship_tasks/utils/colors.dart';
 import 'package:internship_tasks/widgets/buttons.dart';
 
-class WelcomeScreen extends StatelessWidget {
+class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
 
   @override
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          const Image(
-            image: AssetImage(
-              'images/bg_image.png',
+      body: SafeArea(
+        child: Stack(
+          children: [
+            const Image(
+              image: AssetImage(
+                'images/bg_image.png',
+              ),
+              height: double.infinity,
+              width: double.infinity,
             ),
-            height: double.infinity,
-            width: double.infinity,
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const SizedBox(
-                height: 200,
-              ),
-              const Center(
-                child: Image(
-                  image: AssetImage(
-                    'images/branding.png',
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 22.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    height: 448,
                   ),
-                  height: 99,
-                  width: 141,
-                ),
+                  const Center(
+                    child: Image(
+                      image: AssetImage(
+                        'images/branding.png',
+                      ),
+                      height: 99,
+                      width: 141,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 43,
+                  ),
+                  MyButton(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginScreen(),
+                        ),
+                      );
+                    },
+                    title: 'Login',
+                    bgColor: myBlackColor,
+                    textColor: Colors.white,
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  MyButton(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const RegisterScreen(),
+                        ),
+                      );
+                    },
+                    title: 'Register',
+                    bgColor: Colors.white,
+                    textColor: Colors.black,
+                  ),
+                  const SizedBox(
+                    height: 46,
+                  ),
+                  const Center(
+                    child: Text(
+                      'Continue as a guest',
+                      style: TextStyle(
+                        color: myPrimaryColor,
+                        decoration: TextDecoration.underline,
+                        fontSize: 15,
+                        fontFamily: 'Urbanist Bold',
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                ],
               ),
-              const SizedBox(
-                height: 43,
-              ),
-              MyButton(
-                title: 'Login',
-                bgColor: myBlackColor,
-                textColor: Colors.white,
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              MyButton(
-                title: 'Register',
-                bgColor: Colors.white,
-                textColor: Colors.black,
-              ),
-              const SizedBox(
-                height: 46,
-              ),
-            ],
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
