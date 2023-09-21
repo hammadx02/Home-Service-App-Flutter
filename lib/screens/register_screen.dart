@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../utils/colors.dart';
 import '../widgets/buttons.dart';
@@ -30,11 +31,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
               const SizedBox(
                 height: 28,
               ),
-              const Text(
+              Text(
                 'Hello! Register to get\nstarted',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontFamily: 'Urbanist Bold',
+                style: GoogleFonts.urbanist(
+                  textStyle: const TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               const SizedBox(

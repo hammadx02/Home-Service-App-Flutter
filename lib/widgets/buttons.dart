@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:internship_tasks/utils/colors.dart';
 
 class MyButton extends StatelessWidget {
@@ -27,7 +28,7 @@ class MyButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             side: const BorderSide(
               width: 1,
-              color: myBlackColor,
+              color: myBorderColor,
             ),
             borderRadius: BorderRadius.circular(8),
           ),
@@ -35,10 +36,12 @@ class MyButton extends StatelessWidget {
         child: Center(
           child: Text(
             title,
-            style: TextStyle(
-              fontSize: 15,
-              fontFamily: 'Urbanist SemiBold',
-              color: textColor,
+            style: GoogleFonts.urbanist(
+              textStyle: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+                color: textColor,
+              ),
             ),
           ),
         ),

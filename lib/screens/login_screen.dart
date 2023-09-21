@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:internship_tasks/utils/colors.dart';
+import '../widgets/back_button.dart';
 import '../widgets/buttons.dart';
 import '../widgets/text_form_field.dart';
 
@@ -23,13 +25,23 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(
+                height: 12,
+              ),
+              const Row(
+                children: [
+                  MyBackButton(),
+                ],
+              ),
+              const SizedBox(
                 height: 28,
               ),
-              const Text(
+              Text(
                 'Welcome back! Glad\nto see you, Again!',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontFamily: 'Urbanist Bold',
+                style: GoogleFonts.urbanist(
+                  textStyle: const TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               const SizedBox(
@@ -47,16 +59,18 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 15,
               ),
-              const Row(
+              Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
                     'Forgot Password?',
-                    style: TextStyle(
-                      color: myDarkGreyColor,
-                      fontSize: 14,
-                      fontFamily: 'Urbanist SemiBold',
+                    style: GoogleFonts.urbanist(
+                      textStyle: const TextStyle(
+                        color: myDarkGreyColor,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ],

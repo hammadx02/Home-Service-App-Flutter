@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:internship_tasks/utils/colors.dart';
 
 class MyTextFormField extends StatelessWidget {
@@ -26,10 +27,12 @@ class MyTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         // prefixIcon: Icon(prefixIcon),
         hintText: hintText,
-        hintStyle: const TextStyle(
-          fontSize: 15,
-          fontFamily: 'Urbanist Medium',
-          color: myGreyColor,
+        hintStyle: GoogleFonts.urbanist(
+          textStyle: const TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.w500,
+            color: myGreyColor,
+          ),
         ),
         fillColor: const Color(0XFFF7F8F9),
         filled: true,
@@ -61,10 +64,12 @@ class PassTextField extends StatelessWidget {
           scale: 2.8,
         ),
         hintText: 'Enter your password',
-        hintStyle: const TextStyle(
-          fontSize: 15,
-          fontFamily: 'Urbanist Medium',
-          color: myGreyColor,
+        hintStyle: GoogleFonts.urbanist(
+          textStyle: const TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.w500,
+            color: myGreyColor,
+          ),
         ),
         fillColor: const Color(0xffF7F8F9),
         filled: true,

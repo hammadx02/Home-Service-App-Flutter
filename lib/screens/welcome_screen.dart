@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:internship_tasks/screens/login_screen.dart';
 import 'package:internship_tasks/screens/register_screen.dart';
 import 'package:internship_tasks/utils/colors.dart';
@@ -78,14 +79,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   const SizedBox(
                     height: 46,
                   ),
-                  const Center(
+                  Center(
                     child: Text(
                       'Continue as a guest',
-                      style: TextStyle(
-                        color: myPrimaryColor,
-                        decoration: TextDecoration.underline,
-                        fontSize: 15,
-                        fontFamily: 'Urbanist Bold',
+                      style: GoogleFonts.urbanist(
+                        textStyle: const TextStyle(
+                          color: myPrimaryColor,
+                          decoration: TextDecoration.underline,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                   ),

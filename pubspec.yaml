@@ -17,6 +17,7 @@ dependencies:
 
 
   cupertino_icons: ^1.0.2
+  google_fonts: ^6.1.0
 
 dev_dependencies:
   flutter_test:
@@ -38,19 +39,9 @@ flutter:
     - images/
 
 
-fonts:
-    - family: Urbanist Bold
-      fonts:
-        - asset: fonts/Urbanist-Bold.ttf
+# fonts:
+#     - family: Urbanist Bold
+#       fonts:
+#         - asset: fonts/Urbanist-Bold.ttf
        
-    - family: Urbanist SemiBold
-      fonts:
-        - asset: fonts/Urbanist-SemiBold.ttf
-  
-    - family: Urbanist Medium
-      fonts:
-        - asset: fonts/Urbanist-Medium.ttf
-     
-    - family: Urbanist Regular
-      fonts:
-        - asset: fonts/Urbanist-Regular.ttf
+ 
