@@ -85,7 +85,41 @@ class _LoginScreenState extends State<LoginScreen> {
                 textColor: Colors.white,
               ),
               const SizedBox(
-                height: 15,
+                height: 35,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Expanded(
+                    child: Divider(
+                      color: myBorderColor,
+                      thickness: 1,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 12,
+                  ),
+                  Text(
+                    'Or Login with',
+                    style: GoogleFonts.urbanist(
+                      textStyle: const TextStyle(
+                        fontSize: 14,
+                        color: myDarkGreyColor,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 12,
+                  ),
+                  const Expanded(
+                    child: Divider(
+                      color: myBorderColor,
+                      thickness: 1,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

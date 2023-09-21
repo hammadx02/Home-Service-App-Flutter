@@ -9,12 +9,14 @@ class MyBackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.pop(context);
+      },
       child: Container(
         width: 41,
         height: 41,
         decoration: ShapeDecoration(
-          color: myBorderColor,
+          color: Colors.white,
           shape: RoundedRectangleBorder(
             side: const BorderSide(
               width: 1,
@@ -28,7 +30,7 @@ class MyBackButton extends StatelessWidget {
             AssetImage(
               'images/back.png',
             ),
-            size: 4,
+            size: 16,
           ),
         ),
       ),

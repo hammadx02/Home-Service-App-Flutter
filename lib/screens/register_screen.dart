@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../utils/colors.dart';
+import '../widgets/back_button.dart';
 import '../widgets/buttons.dart';
 import '../widgets/text_form_field.dart';
 
@@ -28,6 +29,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(
+                height: 12,
+              ),
+              const Row(
+                children: [
+                  MyBackButton(),
+                ],
+              ),
               const SizedBox(
                 height: 28,
               ),
@@ -82,7 +91,34 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 textColor: Colors.white,
               ),
               const SizedBox(
-                height: 15,
+                height: 35,
+              ),
+              Row(
+                children: [
+                  const Divider(
+                    color: myBorderColor,
+                    thickness: 1,
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  Text(
+                    'Or Login with',
+                    style: GoogleFonts.urbanist(
+                      textStyle: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                  const Divider(
+                    color: myBorderColor,
+                    thickness: 1,
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                ],
               ),
             ],
           ),
