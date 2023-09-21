@@ -15,22 +15,32 @@ class WelcomeScreen extends StatefulWidget {
 class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final orientation = MediaQuery.of(context).orientation;
+    final isPortrait = orientation == Orientation.portrait;
+    final double paddingFraction = isPortrait ? 0.1 : 0.2;
+    final double fontSizeFraction = isPortrait ? 0.03 : 0.04;
+
     return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            const Image(
-              image: AssetImage(
-                'images/bg_image.png',
-              ),
-              height: double.infinity,
-              width: double.infinity,
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
+          const Image(
+            image: AssetImage(
+              'images/bg_image.png',
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 22.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
+          ),
+          FractionallySizedBox(
+            widthFactor: 1,
+            heightFactor: 1,
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width * paddingFraction,
+              ),
+              child: ListView(
+                physics: const BouncingScrollPhysics(),
                 children: [
                   const SizedBox(
                     height: 448,
@@ -83,10 +93,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     child: Text(
                       'Continue as a guest',
                       style: GoogleFonts.urbanist(
-                        textStyle: const TextStyle(
+                        textStyle: TextStyle(
                           color: myPrimaryColor,
                           decoration: TextDecoration.underline,
-                          fontSize: 15,
+                          fontSize: MediaQuery.of(context).size.width *
+                              fontSizeFraction,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
@@ -98,8 +109,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
