@@ -32,7 +32,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(
-                height: 56,
+                height: 12,
               ),
               const Row(
                 children: [
@@ -160,7 +160,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ],
               ),
               const SizedBox(
-                height: 24,
+                height: 54,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
