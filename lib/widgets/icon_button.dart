@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:internship_tasks/utils/colors.dart';
 
 class MyIconButton extends StatelessWidget {
+  final String image;
+  final double hight, width;
   const MyIconButton({
     super.key,
+    required this.image,required this.hight,required this.width,
   });
 
   @override
@@ -21,12 +24,13 @@ class MyIconButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
         ),
       ),
-      child: const Center(
-        child: ImageIcon(
-          AssetImage(
-            'images/back.png',
+      child: Center(
+        child: Image(
+          image: AssetImage(
+            image,
           ),
-          size: 16,
+          height: hight,
+          width: width,
         ),
       ),
     );

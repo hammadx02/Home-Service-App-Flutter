@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:internship_tasks/screens/login_screen.dart';
 
 import '../utils/colors.dart';
 import '../widgets/back_button.dart';
 import '../widgets/buttons.dart';
+import '../widgets/icon_button.dart';
 import '../widgets/text_form_field.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -30,7 +32,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(
-                height: 12,
+                height: 56,
               ),
               const Row(
                 children: [
@@ -94,31 +96,109 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 height: 35,
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Divider(
-                    color: myBorderColor,
-                    thickness: 1,
+                  const Expanded(
+                    child: Divider(
+                      color: myBorderColor,
+                      thickness: 1,
+                    ),
                   ),
                   const SizedBox(
-                    height: 12,
+                    width: 12,
                   ),
                   Text(
-                    'Or Login with',
+                    'Or Register with',
                     style: GoogleFonts.urbanist(
                       textStyle: const TextStyle(
                         fontSize: 14,
+                        color: myDarkGreyColor,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
-                  const Divider(
-                    color: myBorderColor,
-                    thickness: 1,
-                  ),
                   const SizedBox(
-                    height: 12,
+                    width: 12,
+                  ),
+                  const Expanded(
+                    child: Divider(
+                      color: myBorderColor,
+                      thickness: 1,
+                    ),
                   ),
                 ],
+              ),
+              const SizedBox(
+                height: 22,
+              ),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  MyIconButton(
+                    image: 'images/fb.png',
+                    hight: 24,
+                    width: 12,
+                  ),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  MyIconButton(
+                    image: 'images/google.png',
+                    hight: 26,
+                    width: 26,
+                  ),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  MyIconButton(
+                    image: 'images/apple.png',
+                    hight: 26,
+                    width: 21,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'Already have an account?',
+                    style: GoogleFonts.urbanist(
+                      textStyle: const TextStyle(
+                        color: myBlackColor,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginScreen(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      'Login Now',
+                      style: GoogleFonts.urbanist(
+                        textStyle: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 26,
               ),
             ],
           ),

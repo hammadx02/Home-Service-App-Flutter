@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:internship_tasks/screens/register_screen.dart';
 import 'package:internship_tasks/utils/colors.dart';
 import '../widgets/back_button.dart';
 import '../widgets/buttons.dart';
+import '../widgets/icon_button.dart';
 import '../widgets/text_form_field.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -124,7 +126,74 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 22,
               ),
-              
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  MyIconButton(
+                    image: 'images/fb.png',
+                    hight: 24,
+                    width: 12,
+                  ),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  MyIconButton(
+                    image: 'images/google.png',
+                    hight: 26,
+                    width: 26,
+                  ),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  MyIconButton(
+                    image: 'images/apple.png',
+                    hight: 26,
+                    width: 21,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 155,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'Don’t have an account?',
+                    style: GoogleFonts.urbanist(
+                      textStyle: const TextStyle(
+                        color: myBlackColor,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const RegisterScreen(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      'Register Now',
+                      style: GoogleFonts.urbanist(
+                        textStyle: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 26,
+              ),
             ],
           ),
         ),
