@@ -89,16 +89,20 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   const SizedBox(
                     height: 46,
                   ),
-                  Center(
-                    child: Text(
-                      'Continue as a guest',
-                      style: GoogleFonts.urbanist(
-                        textStyle: TextStyle(
-                          color: myPrimaryColor,
-                          decoration: TextDecoration.underline,
-                          fontSize: MediaQuery.of(context).size.width *
-                              fontSizeFraction,
-                          fontWeight: FontWeight.w700,
+                  Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.all(20),
+                    child: Center(
+                      child: Text(
+                        'Continue as a guest',
+                        style: GoogleFonts.urbanist(
+                          textStyle: TextStyle(
+                            color: myPrimaryColor,
+                            decoration: TextDecoration.underline,
+                            fontSize: MediaQuery.of(context).size.width *
+                                fontSizeFraction,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                       ),
                     ),
