@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:internship_tasks/colors/material_color.dart';
 import 'package:internship_tasks/screens/welcome_screen.dart';
 
+import 'screens/home_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
           const Color(0XFFE8ECF4),
         ),
       ),
-      home: const WelcomeScreen(),
+      home: HomeScreen(),
     );
   }
 }
