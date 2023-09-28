@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:internship_tasks/screens/login_screen.dart';
 
 import '../utils/colors.dart';
+import '../utils/utils.dart';
 import '../widgets/back_button.dart';
 import '../widgets/buttons.dart';
 import '../widgets/icon_button.dart';
@@ -21,6 +23,35 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
+  bool loading = false;
+
+  FirebaseAuth _auth = FirebaseAuth.instance;
+
+  @override
+  void dispose() {
+    super.dispose();
+    usernameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+  }
+
+  void signupUser() {
+    _auth
+        .createUserWithEmailAndPassword(
+          email: emailController.text.toString(),
+          password: passwordController.text.toString(),
+        )
+        .then(
+          (value) {},
+        )
+        .onError(
+      (error, stackTrace) {
+        showSnackBar(context, error.toString());
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,7 +122,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     height: 30,
                   ),
                   MyButton(
-                    onTap: () {},
+                    onTap: () {
+                      signupUser();
+                    },
                     title: 'Register',
                     bgColor: myBlackColor,
                     textColor: Colors.white,
