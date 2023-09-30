@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:internship_tasks/models/service.dart';
 
+import '../utils/colors.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -64,7 +66,10 @@ class _HomeScreenState extends State<HomeScreen> {
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.only(
-                      top: 100.0, right: 20.0, left: 20.0),
+                    top: 100.0,
+                    right: 20.0,
+                    left: 20.0,
+                  ),
                   child: Text(
                     'Which service do \nyou need?',
                     style: GoogleFonts.urbanist(
@@ -105,44 +110,59 @@ class _HomeScreenState extends State<HomeScreen> {
           )),
     );
   }
-}
 
-serviceContainer(String name, String image, int index) {
-  return Container(
-    padding: const EdgeInsets.all(10),
-    decoration: BoxDecoration(
-      color:
-          selectedService == index ? Colors.blue.shade50 : Colors.grey.shade100,
-      border: Border.all(
-        color:
-            selectedService == index ? Colors.blue : Colors.blue.withOpacity(0),
-        width: 2.0,
-      ),
-      borderRadius: BorderRadius.circular(20.0),
-    ),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Image.network(
-          image,
-          height: 80,
-          errorBuilder:
-              (BuildContext context, Object exception, StackTrace? stackTrace) {
-            return const Icon(Icons.error);
+  serviceContainer(String name, String image, int index) {
+    return GestureDetector(
+      onTap: () {
+        setState(
+          () {
+            if (selectedService == index) {
+              selectedService = -1;
+            } else {
+              selectedService = index;
+            }
           },
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        Text(
-          name,
-          style: GoogleFonts.urbanist(
-            textStyle: const TextStyle(
-              fontSize: 20,
-            ),
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: selectedService == index
+              ? Colors.blue.shade50
+              : Colors.grey.shade100,
+          border: Border.all(
+            color: selectedService == index
+                ? myPrimaryColor
+                : myPrimaryColor.withOpacity(0),
+            width: 2.0,
           ),
+          borderRadius: BorderRadius.circular(20.0),
         ),
-      ],
-    ),
-  );
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image.network(
+              image,
+              height: 80,
+              errorBuilder: (BuildContext context, Object exception,
+                  StackTrace? stackTrace) {
+                return const Icon(Icons.error);
+              },
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text(
+              name,
+              style: GoogleFonts.urbanist(
+                textStyle: const TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
