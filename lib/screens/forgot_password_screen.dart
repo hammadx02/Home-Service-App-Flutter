@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:internship_tasks/screens/register_screen.dart';
 import 'package:internship_tasks/utils/colors.dart';
+import 'package:internship_tasks/utils/utils.dart';
 import '../widgets/buttons.dart';
 import '../widgets/text_form_field.dart';
 
@@ -14,6 +16,14 @@ class ForgotPasswordScreen extends StatefulWidget {
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final TextEditingController emailController = TextEditingController();
+  final _auth = FirebaseAuth.instance;
+  bool loading = false;
+
+  @override
+  void dispose() {
+    super.dispose();
+    emailController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +83,41 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     height: 38,
                   ),
                   MyButton(
-                    onTap: () {},
+                    loading: loading,
+                    onTap: () {
+                      setState(
+                        () {
+                          loading = true;
+                        },
+                      );
+                      _auth
+                          .sendPasswordResetEmail(
+                        email: emailController.text.toString(),
+                      )
+                          .then(
+                        (value) {
+                          setState(
+                            () {
+                              loading = false;
+                            },
+                          );
+                          Utils().toastMessage(
+                            'We have sent you email to recover password, please check your email',
+                          );
+                        },
+                      ).onError(
+                        (error, stackTrace) {
+                          setState(
+                            () {
+                              loading = false;
+                            },
+                          );
+                          Utils().toastMessage(
+                            error.toString(),
+                          );
+                        },
+                      );
+                    },
                     title: 'Send Code',
                     bgColor: myBlackColor,
                     textColor: Colors.white,

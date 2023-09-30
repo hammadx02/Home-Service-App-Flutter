@@ -19,6 +19,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     final orientation = MediaQuery.of(context).orientation;
     final isPortrait = orientation == Orientation.portrait;
     final double paddingFraction = isPortrait ? 0.1 : 0.2;
+    // ignore: unused_local_variable
     final double fontSizeFraction = isPortrait ? 0.03 : 0.04;
 
     return Scaffold(
@@ -96,13 +97,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     padding: const EdgeInsets.all(20),
                     child: Center(
                       child: Text(
-                        'Continue as a guest',
+                        'Continue as a Guest',
                         style: GoogleFonts.urbanist(
-                          textStyle: TextStyle(
+                          textStyle: const TextStyle(
                             color: myPrimaryColor,
                             decoration: TextDecoration.underline,
-                            fontSize: MediaQuery.of(context).size.width *
-                                fontSizeFraction,
+                            fontSize: 14,
                             fontWeight: FontWeight.w700,
                           ),
                         ),

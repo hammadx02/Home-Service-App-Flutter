@@ -32,16 +32,31 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   void signupUser() {
+    setState(
+      () {
+        loading = true;
+      },
+    );
     _auth
         .createUserWithEmailAndPassword(
-          email: emailController.text.toString(),
-          password: passwordController.text.toString(),
-        )
+      email: emailController.text.toString(),
+      password: passwordController.text.toString(),
+    )
         .then(
-          (value) {},
-        )
-        .onError(
+      (value) {
+        setState(
+          () {
+            loading = false;
+          },
+        );
+      },
+    ).onError(
       (error, stackTrace) {
+        setState(
+          () {
+            loading = false;
+          },
+        );
         Utils().toastMessage(
           error.toString(),
         );
@@ -91,12 +106,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   MyTextFormField(
                     hintText: 'Password',
                     controller: passwordController,
-                    keyboardType: TextInputType.none,
+                    keyboardType: TextInputType.multiline,
                   ),
                   const SizedBox(
                     height: 30,
                   ),
                   MyButton(
+                    loading: loading,
                     onTap: () {
                       signupUser();
                     },

@@ -1,8 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:internship_tasks/screens/forgot_password_screen.dart';
+import 'package:internship_tasks/screens/home_screen.dart';
 import 'package:internship_tasks/screens/register_screen.dart';
 import 'package:internship_tasks/utils/colors.dart';
+import 'package:internship_tasks/utils/utils.dart';
 import '../widgets/buttons.dart';
 import '../widgets/icon_button.dart';
 import '../widgets/text_form_field.dart';
@@ -16,6 +19,56 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  bool loading = false;
+
+  @override
+  void dispose() {
+    super.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+  }
+
+  void loginUser() {
+    setState(
+      () {
+        loading = true;
+      },
+    );
+    _auth
+        .signInWithEmailAndPassword(
+      email: emailController.text.toString(),
+      password: passwordController.text.toString(),
+    )
+        .then(
+      (value) {
+        setState(
+          () {
+            loading = false;
+          },
+        );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const HomeScreen(),
+          ),
+        );
+      },
+    ).onError(
+      (error, stackTrace) {
+        setState(
+          () {
+            loading = false;
+          },
+        );
+        Utils().toastMessage(
+          error.toString(),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +83,6 @@ class _LoginScreenState extends State<LoginScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                
                   Padding(
                     padding: const EdgeInsets.only(
                       top: 85.0,
@@ -56,7 +108,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(
                     height: 15,
                   ),
-                  PassTextField(),
+                  MyTextFormField(
+                    hintText: 'Enter your password',
+                    controller: passwordController,
+                    keyboardType: TextInputType.emailAddress,
+                  ),
                   const SizedBox(
                     height: 15,
                   ),
@@ -91,7 +147,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 30,
                   ),
                   MyButton(
-                    onTap: () {},
+                    loading: loading,
+                    onTap: () {
+                      loginUser();
+                    },
                     title: 'Login',
                     bgColor: myBlackColor,
                     textColor: Colors.white,

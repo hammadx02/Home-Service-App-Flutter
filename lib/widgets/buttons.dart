@@ -8,12 +8,14 @@ class MyButton extends StatelessWidget {
   String title;
   final VoidCallback onTap;
   Color bgColor, textColor;
+  bool loading;
   MyButton({
     super.key,
     required this.title,
     required this.bgColor,
     required this.textColor,
     required this.onTap,
+    this.loading = false,
   });
 
   @override
@@ -34,16 +36,21 @@ class MyButton extends StatelessWidget {
           ),
         ),
         child: Center(
-          child: Text(
-            title,
-            style: GoogleFonts.urbanist(
-              textStyle: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-                color: textColor,
-              ),
-            ),
-          ),
+          child: loading
+              ? const CircularProgressIndicator(
+                  strokeWidth: 3,
+                  color: Colors.white,
+                )
+              : Text(
+                  title,
+                  style: GoogleFonts.urbanist(
+                    textStyle: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      color: textColor,
+                    ),
+                  ),
+                ),
         ),
       ),
     );

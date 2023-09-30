@@ -71,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   left: 20.0,
                 ),
                 child: Text(
-                  'Which service do \nyou need?',
+                  'Which service do you \nneed?',
                   style: GoogleFonts.urbanist(
                     textStyle: TextStyle(
                       fontSize: 30,
@@ -155,6 +155,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 return const Icon(
                   Icons.error,
                   color: Colors.red,
+                  size: 35,
                 );
               },
             ),
