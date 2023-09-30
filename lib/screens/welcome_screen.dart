@@ -40,12 +40,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   image: AssetImage(
                     'images/branding.jpg',
                   ),
-                  height: 170,
+                  height: 200,
                   width: 141,
                 ),
               ),
               const SizedBox(
-                height: 43,
+                height: 30,
               ),
               MyButton(
                 onTap: () {
@@ -77,7 +77,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 textColor: Colors.black,
               ),
               const SizedBox(
-                height: 250,
+                height: 180,
               ),
               Align(
                 alignment: Alignment.bottomCenter,
