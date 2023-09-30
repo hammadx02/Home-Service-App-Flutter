@@ -147,8 +147,11 @@ class _HomeScreenState extends State<HomeScreen> {
             Image.network(
               image,
               height: 80,
-              errorBuilder: (BuildContext context, Object exception,
-                  StackTrace? stackTrace) {
+              errorBuilder: (
+                BuildContext context,
+                Object exception,
+                StackTrace? stackTrace,
+              ) {
                 return const Icon(
                   Icons.error,
                   color: Colors.red,
