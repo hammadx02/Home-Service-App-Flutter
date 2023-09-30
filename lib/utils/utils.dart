@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-showSnackBar(BuildContext context, String text) {
-  return ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(
-      content: Text(text),
-      duration: const Duration(seconds: 2),
-      action: SnackBarAction(
-        label: '',
-        onPressed: () {
-          ScaffoldMessenger.of(context).hideCurrentSnackBar();
-        },
-      ),
-    ),
-  );
+class Utils {
+  void toastMessage(String message) {
+    Fluttertoast.showToast(
+      msg: message,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.SNACKBAR,
+      timeInSecForIosWeb: 2,
+      backgroundColor: Colors.red[400],
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
+  }
 }

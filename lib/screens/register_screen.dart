@@ -2,10 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:internship_tasks/screens/login_screen.dart';
-
 import '../utils/colors.dart';
 import '../utils/utils.dart';
-import '../widgets/back_button.dart';
 import '../widgets/buttons.dart';
 import '../widgets/icon_button.dart';
 import '../widgets/text_form_field.dart';
@@ -18,22 +16,19 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController =
-      TextEditingController();
+
   bool loading = false;
 
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   void dispose() {
     super.dispose();
-    usernameController.dispose();
+
     emailController.dispose();
     passwordController.dispose();
-    confirmPasswordController.dispose();
   }
 
   void signupUser() {
@@ -47,7 +42,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
         )
         .onError(
       (error, stackTrace) {
-        showSnackBar(context, error.toString());
+        Utils().toastMessage(
+          error.toString(),
+        );
       },
     );
   }
@@ -66,36 +63,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  const Row(
-                    children: [
-                      MyBackButton(),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 28,
-                  ),
-                  Text(
-                    'Hello! Register to get\nstarted',
-                    style: GoogleFonts.urbanist(
-                      textStyle: const TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 85.0,
+                    ),
+                    child: Text(
+                      'Hello! Register to get\nstarted',
+                      style: GoogleFonts.urbanist(
+                        textStyle: const TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
                   const SizedBox(
                     height: 32,
-                  ),
-                  MyTextFormField(
-                    hintText: 'Username',
-                    controller: usernameController,
-                    keyboardType: TextInputType.none,
-                  ),
-                  const SizedBox(
-                    height: 12,
                   ),
                   MyTextFormField(
                     hintText: 'Email',
@@ -108,14 +91,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   MyTextFormField(
                     hintText: 'Password',
                     controller: passwordController,
-                    keyboardType: TextInputType.none,
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  MyTextFormField(
-                    hintText: 'Confirm password',
-                    controller: confirmPasswordController,
                     keyboardType: TextInputType.none,
                   ),
                   const SizedBox(

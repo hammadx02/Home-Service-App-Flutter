@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:internship_tasks/screens/forgot_password_screen.dart';
 import 'package:internship_tasks/screens/register_screen.dart';
 import 'package:internship_tasks/utils/colors.dart';
-import '../widgets/back_button.dart';
 import '../widgets/buttons.dart';
 import '../widgets/icon_button.dart';
 import '../widgets/text_form_field.dart';
@@ -31,23 +30,18 @@ class _LoginScreenState extends State<LoginScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  const Row(
-                    children: [
-                      MyBackButton(),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 28,
-                  ),
-                  Text(
-                    'Welcome back! Glad\nto see you, Again!',
-                    style: GoogleFonts.urbanist(
-                      textStyle: const TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
+                
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 85.0,
+                    ),
+                    child: Text(
+                      'Welcome back! Glad\nto see you, Again!',
+                      style: GoogleFonts.urbanist(
+                        textStyle: const TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),

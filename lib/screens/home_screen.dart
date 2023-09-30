@@ -61,53 +61,56 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: NestedScrollView(
-          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-            return <Widget>[
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    top: 100.0,
-                    right: 20.0,
-                    left: 20.0,
-                  ),
-                  child: Text(
-                    'Which service do \nyou need?',
-                    style: GoogleFonts.urbanist(
-                      textStyle: TextStyle(
-                        fontSize: 30,
-                        color: Colors.grey.shade900,
-                        fontWeight: FontWeight.bold,
-                      ),
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return <Widget>[
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  top: 100.0,
+                  right: 20.0,
+                  left: 20.0,
+                ),
+                child: Text(
+                  'Which service do \nyou need?',
+                  style: GoogleFonts.urbanist(
+                    textStyle: TextStyle(
+                      fontSize: 30,
+                      color: Colors.grey.shade900,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
               ),
-            ];
-          },
-          body: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              children: <Widget>[
-                Expanded(
-                  child: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 1.0,
-                      crossAxisSpacing: 20.0,
-                      mainAxisSpacing: 20.0,
-                    ),
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: services.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return serviceContainer(services[index].imageUrl,
-                          services[index].name, index);
-                    },
-                  ),
-                ),
-              ],
             ),
-          )),
+          ];
+        },
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: <Widget>[
+              Expanded(
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 1.0,
+                    crossAxisSpacing: 20.0,
+                    mainAxisSpacing: 20.0,
+                  ),
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: services.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return serviceContainer(
+                      services[index].imageUrl,
+                      services[index].name,
+                      index,
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
@@ -146,7 +149,10 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 80,
               errorBuilder: (BuildContext context, Object exception,
                   StackTrace? stackTrace) {
-                return const Icon(Icons.error);
+                return const Icon(
+                  Icons.error,
+                  color: Colors.red,
+                );
               },
             ),
             const SizedBox(

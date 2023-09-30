@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:internship_tasks/screens/home_screen.dart';
 import 'package:internship_tasks/screens/login_screen.dart';
 import 'package:internship_tasks/screens/register_screen.dart';
 import 'package:internship_tasks/utils/colors.dart';
@@ -79,21 +80,31 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               const SizedBox(
                 height: 180,
               ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Container(
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.all(20),
-                  child: Center(
-                    child: Text(
-                      'Continue as a guest',
-                      style: GoogleFonts.urbanist(
-                        textStyle: TextStyle(
-                          color: myPrimaryColor,
-                          decoration: TextDecoration.underline,
-                          fontSize: MediaQuery.of(context).size.width *
-                              fontSizeFraction,
-                          fontWeight: FontWeight.w700,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomeScreen(),
+                    ),
+                  );
+                },
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.all(20),
+                    child: Center(
+                      child: Text(
+                        'Continue as a guest',
+                        style: GoogleFonts.urbanist(
+                          textStyle: TextStyle(
+                            color: myPrimaryColor,
+                            decoration: TextDecoration.underline,
+                            fontSize: MediaQuery.of(context).size.width *
+                                fontSizeFraction,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                       ),
                     ),

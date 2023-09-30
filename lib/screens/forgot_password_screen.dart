@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:internship_tasks/screens/register_screen.dart';
 import 'package:internship_tasks/utils/colors.dart';
-import '../widgets/back_button.dart';
 import '../widgets/buttons.dart';
 import '../widgets/text_form_field.dart';
 
@@ -35,23 +34,17 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  const Row(
-                    children: [
-                      MyBackButton(),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 28,
-                  ),
-                  Text(
-                    'Forgot Password?',
-                    style: GoogleFonts.urbanist(
-                      textStyle: TextStyle(
-                        fontSize: isPortrait ? 30 : 40,
-                        fontWeight: FontWeight.bold,
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 85.0,
+                    ),
+                    child: Text(
+                      'Forgot Password?',
+                      style: GoogleFonts.urbanist(
+                        textStyle: TextStyle(
+                          fontSize: isPortrait ? 30 : 40,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
