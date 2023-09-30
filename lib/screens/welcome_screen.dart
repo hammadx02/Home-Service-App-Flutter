@@ -22,99 +22,87 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(
-        children: [
-          const Image(
-            image: AssetImage(
-              'images/bg_image.png',
-            ),
-            fit: BoxFit.cover,
-            width: double.infinity,
-            height: double.infinity,
+      body: FractionallySizedBox(
+        widthFactor: 1,
+        heightFactor: 1,
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: MediaQuery.of(context).size.width * paddingFraction,
           ),
-          FractionallySizedBox(
-            widthFactor: 1,
-            heightFactor: 1,
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * paddingFraction,
+          child: ListView(
+            physics: const BouncingScrollPhysics(),
+            children: [
+              const SizedBox(
+                height: 250,
               ),
-              child: ListView(
-                physics: const BouncingScrollPhysics(),
-                children: [
-                  const SizedBox(
-                    height: 448,
+              const Center(
+                child: Image(
+                  image: AssetImage(
+                    'images/branding.jpg',
                   ),
-                  const Center(
-                    child: Image(
-                      image: AssetImage(
-                        'images/branding.png',
-                      ),
-                      height: 99,
-                      width: 141,
+                  height: 170,
+                  width: 141,
+                ),
+              ),
+              const SizedBox(
+                height: 43,
+              ),
+              MyButton(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoginScreen(),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 43,
-                  ),
-                  MyButton(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LoginScreen(),
-                        ),
-                      );
-                    },
-                    title: 'Login',
-                    bgColor: myBlackColor,
-                    textColor: Colors.white,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  MyButton(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const RegisterScreen(),
-                        ),
-                      );
-                    },
-                    title: 'Register',
-                    bgColor: Colors.white,
-                    textColor: Colors.black,
-                  ),
-                  const SizedBox(
-                    height: 46,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.all(20),
-                    child: Center(
-                      child: Text(
-                        'Continue as a guest',
-                        style: GoogleFonts.urbanist(
-                          textStyle: TextStyle(
-                            color: myPrimaryColor,
-                            decoration: TextDecoration.underline,
-                            fontSize: MediaQuery.of(context).size.width *
-                                fontSizeFraction,
-                            fontWeight: FontWeight.w700,
-                          ),
+                  );
+                },
+                title: 'Login',
+                bgColor: myBlackColor,
+                textColor: Colors.white,
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              MyButton(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const RegisterScreen(),
+                    ),
+                  );
+                },
+                title: 'Register',
+                bgColor: Colors.white,
+                textColor: Colors.black,
+              ),
+              const SizedBox(
+                height: 250,
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.all(20),
+                  child: Center(
+                    child: Text(
+                      'Continue as a guest',
+                      style: GoogleFonts.urbanist(
+                        textStyle: TextStyle(
+                          color: myPrimaryColor,
+                          decoration: TextDecoration.underline,
+                          fontSize: MediaQuery.of(context).size.width *
+                              fontSizeFraction,
+                          fontWeight: FontWeight.w700,
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
