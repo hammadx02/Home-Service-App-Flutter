@@ -6,9 +6,11 @@ import 'package:internship_tasks/screens/home_screen.dart';
 import 'package:internship_tasks/screens/register_screen.dart';
 import 'package:internship_tasks/utils/colors.dart';
 import 'package:internship_tasks/utils/utils.dart';
+import '../provider/visibility_provider.dart';
 import '../widgets/buttons.dart';
 import '../widgets/icon_button.dart';
 import '../widgets/text_form_field.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -71,6 +73,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final iconVisibilityProvider = Provider.of<IconVisibilityProvider>(context);
+    // final authProvider = Provider.of<AuthProvider>(context);
+   
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
@@ -108,10 +113,28 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(
                     height: 15,
                   ),
-                  MyTextFormField(
-                    hintText: 'Enter your password',
-                    controller: passwordController,
-                    keyboardType: TextInputType.emailAddress,
+                  ChangeNotifierProvider(
+                    create: (context) => IconVisibilityProvider(),
+                    child: Consumer<IconVisibilityProvider>(
+                      builder: ((context, value, child) {
+                        return MyTextFormField(
+                          isVisable: !iconVisibilityProvider.isVisable,
+                          hintText: 'Enter your password',
+                          controller: passwordController,
+                          keyboardType: TextInputType.emailAddress,
+                          icon: IconButton(
+                            onPressed: () {
+                              iconVisibilityProvider.toggleVisibilty();
+                            },
+                            icon: Icon(
+                              iconVisibilityProvider.isVisable
+                                  ? Icons.visibility_rounded
+                                  : Icons.visibility_off_rounded,
+                            ),
+                          ),
+                        );
+                      }),
+                    ),
                   ),
                   const SizedBox(
                     height: 15,
@@ -149,6 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   MyButton(
                     loading: loading,
                     onTap: () {
+                      // authProvider.addListener(loginUser);
                       loginUser();
                     },
                     title: 'Login',

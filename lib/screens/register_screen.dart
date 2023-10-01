@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:internship_tasks/provider/visibility_provider.dart';
 import 'package:internship_tasks/screens/login_screen.dart';
+import 'package:provider/provider.dart';
 import '../utils/colors.dart';
 import '../utils/utils.dart';
 import '../widgets/buttons.dart';
@@ -42,15 +44,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
       email: emailController.text.toString(),
       password: passwordController.text.toString(),
     )
-        .then(
-      (value) {
-        setState(
-          () {
-            loading = false;
-          },
-        );
-      },
-    ).onError(
+        .then((value) {
+      setState(
+        () {
+          loading = false;
+        },
+      );
+      NormalUtils().toastMessage(
+        'User Registered!',
+      );
+    }).onError(
       (error, stackTrace) {
         setState(
           () {
@@ -66,6 +69,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final iconVisibilityProvider = Provider.of<IconVisibilityProvider>(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
@@ -107,6 +111,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     hintText: 'Password',
                     controller: passwordController,
                     keyboardType: TextInputType.multiline,
+                    isVisable: !iconVisibilityProvider.isVisable,
+                    icon: IconButton(
+                      onPressed: () {
+                        iconVisibilityProvider.toggleVisibilty();
+                      },
+                      icon: Icon(
+                        iconVisibilityProvider.isVisable
+                            ? Icons.visibility_rounded
+                            : Icons.visibility_off_rounded,
+                      ),
+                    ),
                   ),
                   const SizedBox(
                     height: 30,

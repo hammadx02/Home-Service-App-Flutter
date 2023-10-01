@@ -7,16 +7,16 @@ import 'package:internship_tasks/utils/colors.dart';
 class MyTextFormField extends StatelessWidget {
   final String hintText;
   final TextEditingController controller;
-  final Icon? icon;
+  final IconButton? icon;
   final TextInputType keyboardType;
-  final bool isPass;
+  final bool isVisable;
 
   const MyTextFormField({
     super.key,
     required this.hintText,
     required this.controller,
     required this.keyboardType,
-    this.isPass = false,
+    this.isVisable = false,
     this.icon,
   });
 
@@ -24,6 +24,7 @@ class MyTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
+      obscureText: isVisable,
       keyboardType: keyboardType,
       decoration: InputDecoration(
         // prefixIcon: Icon(prefixIcon),

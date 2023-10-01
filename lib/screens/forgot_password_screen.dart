@@ -101,7 +101,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                               loading = false;
                             },
                           );
-                          Utils().toastMessage(
+                          NormalUtils().toastMessage(
                             'We have sent you email to recover password, please check your email',
                           );
                         },

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class IconVisibiltyProvider with ChangeNotifier {
+class IconVisibilityProvider with ChangeNotifier {
   bool _isVisable = false;
 
   bool get isVisable => _isVisable;
