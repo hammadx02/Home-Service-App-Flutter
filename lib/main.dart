@@ -7,6 +7,7 @@ import 'package:internship_tasks/provider/visibility_provider.dart';
 import 'package:internship_tasks/screens/welcome_screen.dart';
 import 'package:provider/provider.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
