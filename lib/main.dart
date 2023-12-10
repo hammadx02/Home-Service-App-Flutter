@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
       child: Builder(
         builder: (BuildContext context) {
           return MaterialApp(
-            // debugShowCheckedModeBanner: false,
+            debugShowCheckedModeBanner: false,
             theme: ThemeData(
               primarySwatch: myMaterialColor(
                 const Color(0XFF152238),
